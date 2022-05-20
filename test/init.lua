@@ -19,6 +19,8 @@ DETAILS: {
 }
 ]]
 
+local allPassed = true
+
 local function doTest(file, testSectionName)
     local testNumber = 1
 
@@ -39,6 +41,7 @@ local function doTest(file, testSectionName)
             result = "PASSED"
         else
             result = "FAILED"
+            allPassed = false
         end
 
         print(string.format(
@@ -62,3 +65,5 @@ end
 doTest(modify, "modifyTest.lua")
 doTest(match, "matchTest.lua")
 doTest(iterator, "iteratorTest.lua")
+
+print("::ALL TESTS PASSED: " .. tostring(allPassed))
